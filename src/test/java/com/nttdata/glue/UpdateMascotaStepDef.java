@@ -1,5 +1,5 @@
 package com.nttdata.glue;
-
+import com.nttdata.steps.CrearMascota;
 import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -10,7 +10,7 @@ public class UpdateMascotaStepDef {
     @Given("que preparo una mascota con el nombre {string}")
     public void quePreparoUnaMascotaConElNombre(String arg0) {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+
     }
 
     @And("envío la creación de la mascota obteniendo el ID")

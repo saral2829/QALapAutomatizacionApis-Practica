@@ -11,7 +11,7 @@ Feature: Crear mascotas en PetStore
       | perros    | Max      |200        |
       | gatos     | Misha    |100        |
       | aves      | Brenda   |200        |
- @TestActualizar
+ @TestActualizarMascota
    Scenario Outline: Actualizamos una mascota a través de su ID
     Given que preparo una mascota con el nombre "<nombre>"
     And envío la creación de la mascota obteniendo el ID
