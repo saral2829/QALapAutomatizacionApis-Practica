@@ -1,33 +1,44 @@
 package com.nttdata.glue;
-import com.nttdata.steps.CrearMascota;
+//import com.nttdata.steps.CrearMascota;
+import com.nttdata.steps.UpdateMascota;
 import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.thucydides.core.annotations.Steps;
 
 public class UpdateMascotaStepDef {
-    @Given("que preparo una mascota con el nombre {string}")
-    public void quePreparoUnaMascotaConElNombre(String arg0) {
-        // Write code here that turns the phrase above into concrete actions
 
+    @Steps
+    UpdateMascota updatemascota;
+    private String updateNombre;
+    private String updateStatus;
+
+    @Given("que preparo una mascota con el nombre {string}")
+    public void quePreparoUnaMascotaConElNombre(String nombre) {
+        // Write code here that turns the phrase above into concrete actions
+        updatemascota.prepararMascota(nombre);
     }
 
     @And("envío la creación de la mascota obteniendo el ID")
     public void envíoLaCreaciónDeLaMascotaObteniendoElID() {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        updatemascota.enviarCreacion();
     }
 
     @When("actualizo la mascota con el nombre {string} y el estado {string}")
-    public void actualizoLaMascotaConElNombreYElEstado(String arg0, String arg1) {
+    public void actualizoLaMascotaConElNombreYElEstado(String nombre, String status) {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        updateNombre=nombre;
+        updateStatus=status;
+        updatemascota.actualizarMascota(nombre,status);
     }
 
-    @Then("se mostrará la mascota actualizada con estado {string} y código {string}")
-    public void seMostraráLaMascotaActualizadaConEstadoYCódigo(String arg0, String arg1) {
+
+    @Then("se mostrará la mascota con su nombre, estado actualizada y código {int}")
+    public void seMostraráLaMascotaConSuNombreEstadoActualizadaYCódigoStatusCode(int statusCode) {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        updatemascota.validarRespuesta(statusCode,updateNombre,updateStatus);
     }
 }
