@@ -1,4 +1,4 @@
-Feature: Crear mascotas en PetStore
+Feature: PetStore
 
   @TestMascota
   Scenario Outline: Crear mascota con diferentes categorías y nombres
@@ -15,12 +15,26 @@ Feature: Crear mascotas en PetStore
    Scenario Outline: Actualizamos una mascota a través de su ID
     Given que preparo una mascota con el nombre "<nombre>"
     And envío la creación de la mascota obteniendo el ID
-    When actualizo la mascota con el nombre "<nombre>" y el estado "<status>"
-    Then se mostrará la mascota actualizada con estado "<status>" y código "<statusCode>"
+    When actualizo la mascota con el nombre "<newnombre>" y el estado "<newstatus>"
+    Then se mostrará la mascota con su nombre, estado actualizada y código <statusCode>
 
     Examples:
-      | nombre | status     | statusCode |
-      | Max    | pending    | 200        |
-      | Misha  | sold       | 200        |
-      | Brenda | available  | 200        |
+      | nombre | newstatus  | statusCode | newnombre |
+      | Max    | pending    | 200        | Caty      |
+      | Misha  | sold       | 200        | Misifu    |
+      | Brenda | available  | 200        | Sofi      |
+
+  @TestConsultarMascota
+  Scenario Outline: Consultamos una mascota por su ID
+    Given que existe una mascota con ID <idMascota>
+    When consulto la mascota por su ID
+    Then se mostrará la información de la mascota y se espera el codigo <statusCode>
+
+    Examples:
+    | idMascota | statusCode |
+    |      1    |    200     |
+    |    123    |    200     |
+    |   1001    |    404     |
+    |      4    |     200    |
+
 

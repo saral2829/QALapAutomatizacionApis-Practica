@@ -4,6 +4,8 @@ import org.json.JSONObject;
 import io.restassured.response.Response;
 import org.junit.Assert;
 
+import static com.nttdata.model.ConfigPet.BASE_URL;
+
 
 public class CrearMascota {
     private JSONObject body;
@@ -33,7 +35,7 @@ public class CrearMascota {
     // Enviar la solicitud
     public void enviarSolicitud() {
         response = RestAssured.given()
-                .baseUri("https://petstore.swagger.io/v2")
+                .baseUri(BASE_URL)
                 .contentType("application/json")
                 .body(body.toString())
                 .when()
