@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty"},
         features = "classpath:features",
-        tags = "@TestConsultarMascota"   //  ==> Definir el @tag  a ejecutar
+        tags = "@TestConsultarOrder"   //  ==> Definir el @tag  a ejecutar
 )
 public class CucumberTestSuite {
 }
